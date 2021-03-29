@@ -1,0 +1,14 @@
+@import "@/assets/styles/var.scss";
+@import "@/assets/styles/mixins.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
