@@ -1,11 +1,15 @@
 <template>
-  <div id="app">Hello world</div>
+  <div id="app">
+    <Main />
+  </div>
 </template>
 
 <script>
+import Main from "./components/Main";
+
 export default {
   name: "App",
-  components: {},
+  components: { Main },
 };
 </script>
 
@@ -16,5 +20,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  font-size: 14px;
 }
 </style>
