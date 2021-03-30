@@ -1,24 +1,22 @@
 <template>
   <div class="size">
     <button @click="decreaseFont">-</button>
-    <span>{{ fontSize }}</span>
+    <span>{{ 14 }}</span>
     <button @click="increaseFont">+</button>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    fontSize: 14,
-  }),
   methods: {
     increaseFont() {
-      this.fontSize++;
+      this.format.size++;
     },
     decreaseFont() {
-      this.fontSize--;
+      this.format.size--;
     },
   },
+  props: {},
 };
 </script>
 

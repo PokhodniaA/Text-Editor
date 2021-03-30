@@ -25,7 +25,7 @@ export default {
 
 .main {
   &__sheet {
-    margin: 50px auto 0;
+    margin: 40px auto 10px;
   }
 }
 </style>

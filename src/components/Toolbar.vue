@@ -4,8 +4,8 @@
       <div class="toolbar__row">
         <span class="toolbar__title">Text Editor</span>
         <div class="toolbar__buttons">
-          <ColorPicker :defaultColor="'Black'">Color</ColorPicker>
-          <ColorPicker>Background</ColorPicker>
+          <ColorPicker :which="'color'">Color</ColorPicker>
+          <ColorPicker :which="'background'">Background</ColorPicker>
           <FontSize />
         </div>
       </div>
@@ -22,6 +22,7 @@ export default {
     ColorPicker,
     FontSize,
   },
+  props: {},
 };
 </script>
 

@@ -10,7 +10,6 @@
 
     <transition name="fade" appear>
       <ul class="picker__dropdown-content" v-if="show">
-        <li v-if="showNone">None</li>
         <li @click="setNewColor('black')">Black</li>
         <li @click="setNewColor('white')">White</li>
         <li @click="setNewColor('red')">Red</li>
@@ -23,25 +22,17 @@
 <script>
 export default {
   data: () => ({
-    color: "None",
+    color: "none",
     show: false,
-    showNone: false,
   }),
   methods: {
     setNewColor(color) {
-      this.color = color;
+      //   this.format[this.which] = color;
+      return color;
     },
   },
   props: {
-    defaultColor: {
-      type: String,
-      default: "None",
-    },
-  },
-  mounted() {
-    this.defaultColor !== "None"
-      ? (this.color = this.defaultColor)
-      : (this.showNone = true);
+    which: String,
   },
 };
 </script>
