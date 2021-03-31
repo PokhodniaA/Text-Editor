@@ -10,10 +10,13 @@
 
     <transition name="fade" appear>
       <ul class="picker__dropdown-content" v-if="show">
-        <li @click="setNewColor('black')">Black</li>
-        <li @click="setNewColor('white')">White</li>
-        <li @click="setNewColor('red')">Red</li>
-        <li @click="setNewColor('yellow')">Yellow</li>
+        <li
+          v-for="(hash, color) in colors"
+          :key="color"
+          @click="setNewColor(hash)"
+        >
+          {{ color }}
+        </li>
       </ul>
     </transition>
   </div>
@@ -22,14 +25,13 @@
 <script>
 export default {
   data: () => ({
-    color: "none",
     show: false,
   }),
   methods: {
     setNewColor(color) {
       document.execCommand("styleWithCSS", true, null);
 
-      switch (this.which) {
+      switch (this.type) {
         case "color":
           document.execCommand("foreColor", false, color);
           break;
@@ -42,7 +44,8 @@ export default {
     },
   },
   props: {
-    which: String,
+    type: String,
+    colors: Object,
   },
 };
 </script>

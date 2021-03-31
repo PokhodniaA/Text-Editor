@@ -5,43 +5,7 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    changeColor() {
-      // document.execCommand("foreColor", false, "red");
-      // Работает
-
-      document.execCommand("styleWithCSS", true, null);
-      document.execCommand("foreColor", false, "red");
-    },
-  },
-  computed: {
-    // Delete getFormat
-    getFormat() {
-      return {
-        color: this.format.color,
-        fontSize: `${this.format.size}px`,
-        backgroundColor: this.format.background,
-      };
-    },
-  },
-  props: {},
-  created() {
-    // Потом удалить
-    // Через anchornode и focusNode смогу брать узлы для json
-    document.addEventListener("selectionchange", () => {
-      // let {
-      //   anchorNode,
-      //   anchorOffset,
-      //   focusNode,
-      //   focusOffset,
-      // } = document.getSelection();
-      let selectedText = document.getSelection().toString();
-      // this.changeColor();
-      console.log(selectedText);
-    });
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

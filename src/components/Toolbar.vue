@@ -4,8 +4,10 @@
       <div class="toolbar__row">
         <span class="toolbar__title">Text Editor</span>
         <div class="toolbar__buttons">
-          <ColorPicker :which="'color'">Color</ColorPicker>
-          <ColorPicker :which="'background'">Background</ColorPicker>
+          <ColorPicker :type="'color'" :colors="colors">Color</ColorPicker>
+          <ColorPicker :type="'background'" :colors="colors"
+            >Background</ColorPicker
+          >
           <FontSize />
         </div>
       </div>
@@ -18,11 +20,13 @@ import ColorPicker from "./Buttons/ColorPicker";
 import FontSize from "./Buttons/FontSize";
 
 export default {
+  props: {
+    colors: Object,
+  },
   components: {
     ColorPicker,
     FontSize,
   },
-  props: {},
 };
 </script>
 

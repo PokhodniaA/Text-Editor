@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <Toolbar />
+    <Toolbar :colors="colors" />
 
     <div class="container">
       <Sheet class="main__sheet" />
@@ -13,6 +13,14 @@ import Sheet from "./Sheet";
 import Toolbar from "./Toolbar";
 
 export default {
+  data: () => ({
+    colors: {
+      black: "#000",
+      white: "#fff",
+      red: "#FF0000",
+      yellow: "#FFFF00",
+    },
+  }),
   components: {
     Sheet,
     Toolbar,
