@@ -6,6 +6,11 @@
 
 <script>
 export default {
+  methods: {
+    foo() {
+      console.log("change");
+    },
+  },
   computed: {
     style() {
       const defaultStyle = this.defaultStyle;

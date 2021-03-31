@@ -9,6 +9,9 @@
             >Background</ColorPicker
           >
           <FontSize :defaultStyle="defaultStyle" />
+          <button class="toolbar__json" @click="$emit('toJSON')">
+            to JSON
+          </button>
         </div>
       </div>
     </div>
@@ -59,6 +62,22 @@ export default {
     justify-content: space-between;
 
     width: 30%;
+  }
+
+  &__json {
+    height: 23px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #2c3e50;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: #f48fb1;
+      border-bottom: 1px solid #f48fb1;
+    }
   }
 }
 </style>
