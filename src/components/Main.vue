@@ -2,7 +2,7 @@
   <div class="main">
     <Toolbar :colors="colors" :defaultStyle="defaultStyle" @toJSON="toJSON" />
 
-    <div class="container">
+    <div class="main__main">
       <Sheet
         class="main__sheet"
         :colors="colors"
@@ -95,6 +95,12 @@ export default {
 @import "@/assets/styles/styles.scss";
 
 .main {
+  &__main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
   &__sheet {
     margin: 40px auto 10px;
   }

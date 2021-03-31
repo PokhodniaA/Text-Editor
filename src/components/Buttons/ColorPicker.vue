@@ -51,35 +51,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/styles.scss";
+
 // отрефакторить css
 .picker {
   position: relative;
 
   &__button {
-    background: none;
-    border: none;
-    border-bottom: 1px solid #2c3e50;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.3s;
+    @include toolButton;
 
-    &:hover {
-      cursor: pointer;
-      color: #f48fb1;
-      border-bottom: 1px solid #f48fb1;
-    }
+    height: 100%;
   }
 
   &__dropdown-content {
     position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 0;
-    z-index: 1;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    padding: 12px 0;
     width: max-content;
+
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    transform: translateX(-50%);
 
     li {
       padding: 5px 20px;
@@ -95,11 +90,13 @@ export default {
   }
 }
 
+// Modifications
+
 .active {
   border-bottom: 1px solid #f48fb1;
 }
 
-// Adnimations
+// Animations
 
 .fade-enter-active,
 .fade-leave-active {

@@ -71,6 +71,10 @@ export default {
   border: 1px solid #2c3e50;
   border-radius: 2px;
 
+  span {
+    padding: 0 4px;
+  }
+
   button {
     border: none;
     background: none;

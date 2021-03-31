@@ -41,6 +41,8 @@ export default {
   width: 100%;
   height: 80px;
 
+  padding: 0 10px;
+
   background: #e3f2fd;
 
   &__row {
@@ -55,6 +57,10 @@ export default {
   &__title {
     font-size: 1.5rem;
     font-style: italic;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 
   &__buttons {
@@ -62,22 +68,18 @@ export default {
     justify-content: space-between;
 
     width: 30%;
+
+    @media screen and (max-width: 1200px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
   }
 
   &__json {
-    height: 23px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #2c3e50;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.3s;
-
-    &:hover {
-      cursor: pointer;
-      color: #f48fb1;
-      border-bottom: 1px solid #f48fb1;
-    }
+    @include toolButton;
   }
 }
 </style>

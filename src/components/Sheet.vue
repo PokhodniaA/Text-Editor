@@ -33,17 +33,16 @@ export default {
 
 <style lang="scss" scoped>
 .sheet {
-  width: 80%;
-  height: 80vh;
+  width: 80vw;
+  height: calc(1.41 * 80vw);
   padding: 40px;
 
   border: none;
   outline: none;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-  p {
-    font-size: medium;
-    color: black;
+  @media screen and (max-width: 700px) {
+    width: 95vw;
   }
 }
 </style>
