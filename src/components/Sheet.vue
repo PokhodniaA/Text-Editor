@@ -1,17 +1,6 @@
 <template>
   <div class="sheet" contenteditable="true">
     <p>Some text</p>
-
-    <!-- <textarea
-      autofocus
-      name="main"
-      wrap="soft"
-      class="sheet__main"
-      :style="getFormat"
-    >
-Hello
-  </textarea
-    > -->
   </div>
 </template>
 
@@ -19,6 +8,10 @@ Hello
 export default {
   methods: {
     changeColor() {
+      // document.execCommand("foreColor", false, "red");
+      // Работает
+
+      document.execCommand("styleWithCSS", true, null);
       document.execCommand("foreColor", false, "red");
     },
   },
@@ -34,6 +27,7 @@ export default {
   },
   props: {},
   created() {
+    // Потом удалить
     // Через anchornode и focusNode смогу брать узлы для json
     document.addEventListener("selectionchange", () => {
       // let {
@@ -43,6 +37,7 @@ export default {
       //   focusOffset,
       // } = document.getSelection();
       let selectedText = document.getSelection().toString();
+      // this.changeColor();
       console.log(selectedText);
     });
   },
@@ -60,18 +55,8 @@ export default {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
   p {
-    font-size: 14px;
+    font-size: medium;
     color: black;
   }
-
-  // &__main {
-  //   width: 100%;
-  //   height: 100%;
-  //   padding: 0;
-
-  //   outline: none;
-  //   resize: none;
-  //   border: none;
-  // }
 }
 </style>

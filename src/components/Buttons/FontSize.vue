@@ -1,19 +1,28 @@
 <template>
   <div class="size">
     <button @click="decreaseFont">-</button>
-    <span>{{ 14 }}</span>
+    <span>{{ fontSize }}</span>
     <button @click="increaseFont">+</button>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    fontSize: 3,
+  }),
   methods: {
     increaseFont() {
-      this.format.size++;
+      if (this.fontSize < 7) {
+        document.execCommand("styleWithCSS", true, null);
+        document.execCommand("fontSize", false, ++this.fontSize);
+      }
     },
     decreaseFont() {
-      this.format.size--;
+      if (this.fontSize > 1) {
+        document.execCommand("styleWithCSS", true, null);
+        document.execCommand("fontSize", false, --this.fontSize);
+      }
     },
   },
   props: {},
@@ -35,6 +44,8 @@ export default {
     border: none;
     background: none;
     outline: none;
+    user-select: none;
+
     font-size: 1.5rem;
 
     transition: 0.3s;

@@ -53,7 +53,7 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    width: 20%;
+    width: 30%;
   }
 }
 </style>

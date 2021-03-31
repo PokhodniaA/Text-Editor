@@ -27,8 +27,18 @@ export default {
   }),
   methods: {
     setNewColor(color) {
-      //   this.format[this.which] = color;
-      return color;
+      document.execCommand("styleWithCSS", true, null);
+
+      switch (this.which) {
+        case "color":
+          document.execCommand("foreColor", false, color);
+          break;
+        case "background":
+          document.execCommand("hiliteColor", false, color);
+          break;
+        default:
+          break;
+      }
     },
   },
   props: {
@@ -71,6 +81,7 @@ export default {
     li {
       padding: 5px 20px;
       list-style: none;
+      user-select: none;
       transition: 0.3s;
 
       &:hover {
