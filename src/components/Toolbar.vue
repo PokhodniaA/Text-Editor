@@ -8,7 +8,7 @@
           <ColorPicker :type="'background'" :colors="colors"
             >Background</ColorPicker
           >
-          <FontSize />
+          <FontSize :defaultStyle="defaultStyle" />
         </div>
       </div>
     </div>
@@ -22,6 +22,7 @@ import FontSize from "./Buttons/FontSize";
 export default {
   props: {
     colors: Object,
+    defaultStyle: Object,
   },
   components: {
     ColorPicker,

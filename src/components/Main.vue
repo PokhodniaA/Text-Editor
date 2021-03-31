@@ -1,9 +1,13 @@
 <template>
   <div class="main">
-    <Toolbar :colors="colors" />
+    <Toolbar :colors="colors" :defaultStyle="defaultStyle" />
 
     <div class="container">
-      <Sheet class="main__sheet" />
+      <Sheet
+        class="main__sheet"
+        :colors="colors"
+        :defaultStyle="defaultStyle"
+      />
     </div>
   </div>
 </template>
@@ -19,6 +23,11 @@ export default {
       white: "#fff",
       red: "#FF0000",
       yellow: "#FFFF00",
+    },
+    defaultStyle: {
+      color: "black",
+      "font-size": "medium",
+      background: "",
     },
   }),
   components: {

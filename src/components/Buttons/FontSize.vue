@@ -9,7 +9,7 @@
 <script>
 export default {
   data: () => ({
-    fontSize: 3,
+    fontSize: 0,
   }),
   methods: {
     increaseFont() {
@@ -24,6 +24,38 @@ export default {
         document.execCommand("fontSize", false, --this.fontSize);
       }
     },
+  },
+  props: {
+    defaultStyle: Object,
+  },
+  mounted() {
+    switch (this.defaultStyle["font-size"]) {
+      case "x-small":
+        this.fontSize = 1;
+        break;
+      case "small":
+        this.fontSize = 2;
+        break;
+      case "medium":
+        this.fontSize = 3;
+        break;
+      case "large":
+        this.fontSize = 4;
+        break;
+      case "x-large":
+        this.fontSize = 5;
+        break;
+      case "xx-large":
+        this.fontSize = 6;
+        break;
+      case "xxx-large":
+        this.fontSize = 7;
+        break;
+
+      default:
+        this.fontSize = 3;
+        break;
+    }
   },
 };
 </script>

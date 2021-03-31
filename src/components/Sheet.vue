@@ -1,11 +1,29 @@
 <template>
   <div class="sheet" contenteditable="true">
-    <p>Some text</p>
+    <p :style="style">Some text</p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    style() {
+      const defaultStyle = this.defaultStyle;
+
+      return Object.keys(defaultStyle).reduce(
+        (style, key) =>
+          key === "color" || key === "background"
+            ? style + `${key}: ${this.colors[defaultStyle[key]]}; `
+            : style + `${key}: ${defaultStyle[key]}; `,
+        ""
+      );
+    },
+  },
+  props: {
+    colors: Object,
+    defaultStyle: Object,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
