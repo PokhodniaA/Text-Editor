@@ -53,7 +53,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/styles.scss";
 
-// отрефакторить css
 .picker {
   position: relative;
 
@@ -78,8 +77,10 @@ export default {
 
     li {
       padding: 5px 20px;
+
       list-style: none;
       user-select: none;
+
       transition: 0.3s;
 
       &:hover {

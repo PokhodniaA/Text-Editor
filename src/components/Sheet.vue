@@ -6,12 +6,8 @@
 
 <script>
 export default {
-  methods: {
-    foo() {
-      console.log("change");
-    },
-  },
   computed: {
+    // Set up default style
     style() {
       const defaultStyle = this.defaultStyle;
 

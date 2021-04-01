@@ -14,21 +14,24 @@ export default {
   methods: {
     increaseFont() {
       if (this.fontSize < 7) {
-        document.execCommand("styleWithCSS", true, null);
-        document.execCommand("fontSize", false, ++this.fontSize);
+        this.changeFontSize(++this.fontSize);
       }
     },
     decreaseFont() {
       if (this.fontSize > 1) {
-        document.execCommand("styleWithCSS", true, null);
-        document.execCommand("fontSize", false, --this.fontSize);
+        this.changeFontSize(--this.fontSize);
       }
+    },
+    changeFontSize(size) {
+      document.execCommand("styleWithCSS", true, null);
+      document.execCommand("fontSize", false, size);
     },
   },
   props: {
     defaultStyle: Object,
   },
   mounted() {
+    // Set up default font size
     switch (this.defaultStyle["font-size"]) {
       case "x-small":
         this.fontSize = 1;

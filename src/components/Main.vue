@@ -33,7 +33,7 @@ export default {
   }),
   methods: {
     showJSON() {
-      console.dir(this.$refs.text.$el);
+      // Show in console JSON
       console.log(this.parseJSON(this.$refs.text.$el));
     },
     parseJSON(element) {
@@ -42,7 +42,7 @@ export default {
 
       // Find style in parrent elements
       const findStyle = (element, value) => {
-        if (element.parentNode.style[value] && element.tagName !== "DIV") {
+        if (element.parentNode.style[value]) {
           return element.parentNode.style[value];
         } else if (element.tagName == "DIV") {
           return "";
