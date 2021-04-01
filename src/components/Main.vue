@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <Toolbar :colors="colors" :defaultStyle="defaultStyle" @toJSON="toJSON" />
+    <Toolbar :colors="colors" :defaultStyle="defaultStyle" @toJSON="showJSON" />
 
     <div class="main__main">
       <Sheet
@@ -32,56 +32,53 @@ export default {
     },
   }),
   methods: {
-    toJSON() {
-      //   console.log(this.$refs.text.$el);
+    showJSON() {
+      console.dir(this.$refs.text.$el);
       console.log(this.parseJSON(this.$refs.text.$el));
     },
     parseJSON(element) {
-      const findStyle = (e, value) => {
-        if (e.parentNode.style[value] && e.tagName !== "DIV") {
-          return e.parentNode.style[value];
-        } else if (e.tagName == "DIV") {
-          console.log("div,", value);
+      // Result array
+      const model = [];
+
+      // Find style in parrent elements
+      const findStyle = (element, value) => {
+        if (element.parentNode.style[value] && element.tagName !== "DIV") {
+          return element.parentNode.style[value];
+        } else if (element.tagName == "DIV") {
           return "";
         } else {
-          return findStyle(e.parentNode, value);
+          return findStyle(element.parentNode, value);
         }
       };
 
-      const TextElem = (e) => ({
-        toJSON: () => ({
-          text: e.textContent,
-          //   color: e.parentNode.style.color,
-          //   fontSize: e.parentNode.style.fontSize,
-          //   "background-color": e.parentNode.style["background-color"],
-          color: findStyle(e, "color"),
-          fontSize: findStyle(e, "fontSize"),
-          "background-color": findStyle(e, "background-color"),
-        }),
-      });
+      // Add text node into model
+      const TextElem = (element) => {
+        model.push({
+          text: element.textContent,
+          color: findStyle(element, "color"),
+          fontSize: findStyle(element, "fontSize"),
+          "background-color": findStyle(element, "background-color"),
+        });
+      };
 
-      const Elem = (e) => ({
-        toJSON: () => ({
-          tagName: e.tagName,
-          children: Array.from(e.childNodes, fromNode),
-        }),
-      });
-
-      // fromNode :: Node -> Elem
-      const fromNode = (e) => {
-        switch (e.nodeType) {
+      // Looking for text node
+      const fromNode = (element) => {
+        switch (element.nodeType) {
           case 3:
-            return TextElem(e);
+            return TextElem(element);
           default:
-            return Elem(e);
+            return Elem(element);
         }
       };
 
-      // html2json :: Node -> JSONString
-      const html2json = (element) => JSON.stringify(Elem(element), null, "  ");
+      const Elem = (element) => {
+        element.childNodes.forEach((child) => {
+          fromNode(child);
+        });
+      };
 
-      console.log(html2json(element), "test");
-      console.dir(element, "element");
+      Elem(element);
+      return JSON.stringify(model, null, "  ");
     },
   },
   components: {

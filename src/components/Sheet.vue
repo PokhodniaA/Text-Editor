@@ -1,6 +1,6 @@
 <template>
-  <div class="sheet" contenteditable="true">
-    <p :style="style">Some text</p>
+  <div class="sheet" contenteditable="true" :style="style">
+    <p>Some text</p>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
       return Object.keys(defaultStyle).reduce(
         (style, key) =>
           key === "color" || key === "background"
-            ? style + `${key}: ${this.colors[defaultStyle[key]]}; `
+            ? style + `${key}: ${this.colors[defaultStyle[key]] || ""}; `
             : style + `${key}: ${defaultStyle[key]}; `,
         ""
       );
